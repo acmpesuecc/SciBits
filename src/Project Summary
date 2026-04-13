@@ -1,9 +1,17 @@
 PROJECT SUMMARY 32-bit Floating-Point ALU:-
 
 This project presents the design and implementation of a 32-bit floating-point Arithmetic Logic Unit (ALU) capable of 
-performing both basic and advanced mathematical operations. The ALU is designed using a modular approach, where each 
-operation is implemented as an independent functional unit, improving scalability, clarity,
+performing both basic and advanced mathematical operations, it is a A hardware-based scientific calculator implemented using
+RTL and Vivado. The ALU is designed using a modular approach, where each operation is implemented as an independent functional unit, improving scalability, clarity,
 and ease of debugging. Based on the control signal, the ALU selects and outputs the result of the desired operation.
+
+OBJECTIVE OF THE PROJECT
+The motivation behind this project is to move beyond theoretical learning and work towards designing a real hardware system
+with the long-term goal of building a chip. Through this project, I aimed to strengthen my understanding of Hardware
+Description Languages (HDL) and RTL design by implementing a complete and functional ALU. Instead of limiting the design
+to basic integer operations, I focused on developing a more practical system capable of handling complex computations. 
+This approach helped me gain hands-on experience in digital design, modular architecture, and hardware-level problem 
+solving. Ultimately, this project serves as a foundation for future work in VLSI design and chip implementation.
 
 
 Floating-Point Representation:
@@ -71,6 +79,16 @@ computes its result, and the outputs are connected to a shared selection block. 
 as the ALU does not need to wait for one operation to finish before starting another.
 The modular design also allows individual components to be tested and verified separately before integration, improving 
 reliability and maintainability.
+
+
+FUTURE SCOPE FOR THE ALU:
+
+In terms of future scope, this project can be extended by adding more advanced mathematical operations such as statistical 
+functions, permutations and combinations, and trigonometric computations. This would further enhance the capability of the 
+ALU and make it suitable for more complex applications.
+Additionally, the design can be taken beyond simulation by converting the RTL design into a physical ASIC layout using tools
+like OpenLane, generating a GDS2 file. This would allow the ALU to be implemented as an actual hardware chip.
+So, the project has strong potential to evolve from a functional design into a complete hardware implementation.
 
 
 
