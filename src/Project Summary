@@ -1,0 +1,81 @@
+PROJECT SUMMARY 32-bit Floating-Point ALU:-
+
+This project presents the design and implementation of a 32-bit floating-point Arithmetic Logic Unit (ALU) capable of 
+performing both basic and advanced mathematical operations. The ALU is designed using a modular approach, where each 
+operation is implemented as an independent functional unit, improving scalability, clarity,
+and ease of debugging. Based on the control signal, the ALU selects and outputs the result of the desired operation.
+
+
+Floating-Point Representation:
+All computations are performed using the IEEE 754 floating point standard, which represents numbers using three 
+components: sign, exponent, and mantissa. Each module internally handles these components by decomposing the inputs,
+performing the required operation, normalizing the result, and recombining them into a valid floating-point output. 
+This ensures consistency, precision, and support for a wide range of values.
+
+
+BASIC ARITHMETIC MODULES:
+The ALU includes four primary arithmetic units
+
+Floating-Point Adder (fp_adder)-
+This module performs addition by first aligning the exponents of the two inputs. The mantissas are then added, followed by 
+normalization and rounding to maintain proper format.
+
+Floating-Point Subtractor (fp_subtractor)-
+Similar to the adder, but performs subtraction of mantissas after exponent alignment. It also includes normalization to
+ensure the result remains in proper floating-point form.
+
+Floating-Point Multiplier (fp_multiplier)-
+In this module, mantissas are multiplied while exponents are added (with bias adjustment). The result is then normalized 
+and rounded to fit within the 32-bit format.
+
+Floating-Point Divider (fp_divider)-
+This unit divides mantissas and subtracts exponents accordingly. Post-division, normalization and rounding are applied to
+produce the final result.
+
+
+
+ADVANCED COMPUTATIONAL MODULES
+To extend functionality beyond basic arithmetic, the ALU includes the following:
+
+Square Root Module (fp_sqrt)
+This module computes the square root of a floating-point number using the Newton-Raphson iterative method. Starting with an
+initial approximation, the method refines the result through repeated iterations until sufficient accuracy is achieved. 
+This approach is efficient and suitable for hardware implementation.
+
+Quadratic Equation Solver (fp_quadratic)
+This module computes the roots of a quadratic equation of the form ax² + bx + c = 0. It first calculates the discriminant
+(b² − 4ac), then uses the square root module to evaluate it, and finally computes both roots using floating-point arithmetic.
+The outputs are two values, x₁ and x₂, representing the solutions.
+
+
+Control and Selection Logic
+
+All module outputs are computed in parallel, and the final result is selected using a combinational case statement based on 
+the 3-bit operation code:
+
+000 → Addition
+001 → Subtraction
+010 → Multiplication
+011 → Division
+100 → Square Root
+101 → First root of quadratic (x₁)
+110 → Second root of quadratic (x₂)
+
+This structure ensures fast operation selection and efficient data flow.
+
+
+INTERCONNECTION AND DATA FLOW:
+
+The ALU is designed such that all input values are simultaneously fed into the respective modules. Each module independently
+computes its result, and the outputs are connected to a shared selection block. This parallel architecture reduces latency, 
+as the ALU does not need to wait for one operation to finish before starting another.
+The modular design also allows individual components to be tested and verified separately before integration, improving 
+reliability and maintainability.
+
+
+
+
+
+
+
+
